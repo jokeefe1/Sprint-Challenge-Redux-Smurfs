@@ -38,12 +38,13 @@ export const handleAddSmurf = smurf => dispatch => {
   dispatch({ type: ADD_SMURF_START })
   axios
     .post('http://localhost:3333/smurfs', smurf)
-    .then( res => dispatch({ type: ADD_SMURF_SUCCESS, payload: smurf }))
+    .then( res => dispatch({ type: ADD_SMURF_SUCCESS, payload: res.data }))
     .catch( err => dispatch({ type: ADD_SMURF_FAIL, payload: err }))
 }
 
 export const handleDeleteSmurf = id => dispatch => {
   dispatch({ type: DELETE_SMURF_START })
+  console.log(id)
   axios
     .delete(`http://localhost:3333/smurfs/${id}`, { params: id })
     .then( res => dispatch({ type: DELETE_SMURF_SUCCESS, payload: id }))

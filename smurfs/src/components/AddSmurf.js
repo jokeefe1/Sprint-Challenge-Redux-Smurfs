@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleAddSmurf } from '../actions/index'
+import { handleAddSmurf } from '../actions/index';
 
 class AddSmurf extends Component {
     state = {
@@ -52,7 +52,9 @@ class AddSmurf extends Component {
     }
 }
 
+const mapStateToProps = state => ({});
+
 export default connect(
-    () => {},
+    mapStateToProps,
     { handleAddSmurf }
 )(AddSmurf);

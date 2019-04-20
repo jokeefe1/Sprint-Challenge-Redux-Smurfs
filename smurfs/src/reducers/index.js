@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
-        smurfs: [ ...state.smurfs, action.payload ]
+        smurfs: action.payload
       }
     case ADD_SMURF_FAIL: 
       return {
