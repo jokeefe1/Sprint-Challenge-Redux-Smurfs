@@ -1,4 +1,4 @@
-import { GET_SMURF_START, GET_SMURF_SUCCESS, GET_SMURF_FAIL, ADD_SMURF_START, ADD_SMURF_SUCCESS, ADD_SMURF_FAIL } from "../actions";
+import { GET_SMURF_START, GET_SMURF_SUCCESS, GET_SMURF_FAIL, ADD_SMURF_START, ADD_SMURF_SUCCESS, ADD_SMURF_FAIL, DELETE_SMURF_START, DELETE_SMURF_SUCCESS, DELETE_SMURF_FAIL } from "../actions";
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -68,6 +68,23 @@ export default (state = initialState, action) => {
         ...state,
         addingSmurf: false,
         error: action.payload
+      }
+    case DELETE_SMURF_START: 
+      return {
+        ...state,
+        deletingSmurf: true
+      }
+    case DELETE_SMURF_SUCCESS:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: state.smurfs.filter( smurf => smurf.id !== action.payload )
+      }
+    case DELETE_SMURF_FAIL: 
+      return {
+        ...state,
+        deletingSmurf: false,
+        errors: action.payload
       }
     default:
       return state

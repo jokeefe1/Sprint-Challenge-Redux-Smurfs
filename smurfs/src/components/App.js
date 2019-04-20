@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleGetSmurf } from '../actions/index';
+import { handleGetSmurf, handleDeleteSmurf } from '../actions/index';
 import './App.css';
 import ListSmurfs from './ListSmurfs';
 import AddSmurf from './AddSmurf';
@@ -15,11 +15,12 @@ class App extends Component {
         this.props.handleGetSmurf();
     };
 
+
     render() {
         return (
             <div>
                 <AddSmurf />
-                <ListSmurfs />
+                <ListSmurfs handleDeleteSmurf={this.props.handleDeleteSmurf}/>
             </div>
         );
     }
@@ -31,5 +32,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { handleGetSmurf }
+    { handleGetSmurf, handleDeleteSmurf }
 )(App);
